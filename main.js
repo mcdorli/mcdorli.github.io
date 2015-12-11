@@ -26,7 +26,7 @@ function loop() {
 	window.setTimeout(loop, 16);
 }
 
-var snowCount = 0;
+var snowCount = 2;
 var particlesLength = 1501;
 var snowLayer;
 
