@@ -12,7 +12,7 @@ function main() {
 	
 	snowLayer = new SnowLayer();
 	
-	for (var i = 0; i < 1500; i++) {
+	for (var i = 0; i < 2500; i++) {
 		particles[i] = new Snow(Math.random() * (c.width + 300) - 300, Math.random() * c.height);
 	}
 	
