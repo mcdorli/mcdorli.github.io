@@ -8,7 +8,7 @@ function SnowLayer() {
 		this.points[i] = new Vector2(i * c.width / (c.width / 50), c.height-10);
 	}
 }
-var growth = 0.10;
+var growth = 0.5;
 SnowLayer.prototype.update = function() {
 	var r = Math.floor(Math.random() * count);
 	
