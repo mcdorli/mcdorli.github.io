@@ -24,7 +24,10 @@
         P: new Vector4(-0.5,  0.5,  0.5,  0.5)
     };
     
-    var combinations = "AB,BC,CD,DA,EF,FG,GH,HE,AE,BF,CG,DH,IJ,JK,KL,LI,MN,NO,OP,PM,IM,JN,KO,LP,AI,BJ,CK,DL,EM,FN,GO,HP".split(",").map(s=>s.split(""));
+    var combinations = "AB,BC,CD,DA,EF,FG,GH,HE,AE,BF,CG,DH,IJ,JK,KL,LI,MN,NO,OP,PM,IM,JN,KO,LP,AI,BJ,CK,DL,EM,FN,GO,HP".split(",");
+    for (var i in combinations) {
+        combinations[i] = combinations[i].split("");
+    }
     
     var angle = new Vector4(0, 0, 0, 0);
     var deltaA = Math.PI / 180;
@@ -37,7 +40,7 @@
         
         ctx.translate(size / 2, size / 2);
         
-        ctx.strokeStyle="white";
+        ctx.strokeStyle="#00aa00";
         ctx.lineWidth = 4;
         
         loop();
