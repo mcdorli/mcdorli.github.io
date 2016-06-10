@@ -1,7 +1,7 @@
 (function cube() {
     
     var c, ctx;
-    var size = 500;
+    var size = 600;
     var cubeSize = size / 2;
     
     var tesseract = {
@@ -36,6 +36,9 @@
         ctx = c.getContext("2d");
         
         ctx.translate(size / 2, size / 2);
+        
+        ctx.strokeStyle="white";
+        ctx.lineWidth = 4;
         
         loop();
     }
