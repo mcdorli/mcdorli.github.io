@@ -31,7 +31,7 @@
         P: new Vector4(-0.5,  0.5,  0.5,  0.5)
     };
     
-    var combinations = "AB,BC,CD,DA,EF,FG,GH,HE,AE,BF,CG,DH,IJ,JK,KL,LI,MN,NO,OP,PM,IM,JN,KO,LP,AI,BJ,CK,DL,EM,FN,GO,HP".split(",");
+    var combinations = "ABCD,EFGH,ABFE,BCGF,CDHG,ADHE,IJKL,MNOP,IJNM,JKON,KLPO,LIMP,ABJI,BCKJ,CDLK,DAIL,EFNM,FGON,GHPO,HEMP".split(",");
     for (var i in combinations) {
         combinations[i] = combinations[i].split("");
     }
@@ -47,8 +47,9 @@
         
         ctx.translate(size / 2, size / 2);
         
-        ctx.strokeStyle="#00aa00";
-        ctx.lineWidth = 4;
+        ctx.fillStyle = "rgba(0, 255, 0, 0.2)";
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 1;
         
         loop();
     }
@@ -109,19 +110,20 @@
             temp[key] = rXW.multiplyVector(rYW.multiplyVector(rZW.multiplyVector(rZ.multiplyVector(rY.multiplyVector(rX.multiplyVector(tesseract[key]))))));
         }
         
-        ctx.beginPath();
-        for (var combination of combinations) {
-            var p1 = temp[combination[0]];
-            var p2 = temp[combination[1]];
+        for (var i in combinations) {
+            ctx.beginPath();
+            for (var j in combinations[i]) {
+                var p = temp[combinations[i][j]];
+                
+                var proj = p.z + 2;
+                
+                ctx.lineTo(p.x * cubeSize / proj, p.y * cubeSize / proj);
+            }
             
-            var proj1 = (p1.z + 1.5);
-            var proj2 = (p2.z + 1.5);
-            
-            ctx.moveTo(p1.x * cubeSize / proj1, p1.y * cubeSize / proj1);
-            ctx.lineTo(p2.x * cubeSize / proj2, p2.y * cubeSize / proj2);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
         }
-        
-        ctx.stroke();
     }
     main();
 })();
