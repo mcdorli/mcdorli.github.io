@@ -3,7 +3,7 @@
 	<head>
 		<title>Hypercube</title>
 		<script type="text/javascript" src="main.js" defer="defer"></script>
-		<script type="text/javascript" src="Math.js"></script>
+		<script type="text/javascript" src="math/Math.js"></script>
 		<style>
 			body {
 				padding: 0;
@@ -17,18 +17,29 @@
 				width: 500px;
 			}
 			#container {
-				width: 550px;
+				position: absolute;
+				top: 0;
+				right: 50px;
+				padding: 5px;
+				border: 1px solid black;
+				box-sizing: border-box;
+			}
+			.description {
+				width: 30px;
+				margin: 2px;
 			}
 		</style>
 	<body>
 		<canvas id="canvas"></canvas><br />
 		<div id="container">
-			YZ: <input type="range" min="0" max="360" step="0.5" value="0" id="rotYZ" class="range"/><br />
-			XZ: <input type="range" min="0" max="360" step="0.5" value="0" id="rotXZ" class="range"/><br />
-			XY: <input type="range" min="0" max="360" step="0.5" value="0" id="rotXY" class="range"/><br />
-			XW: <input type="range" min="0" max="360" step="0.5" value="0" id="rotXW" class="range"/><br />
-			YW: <input type="range" min="0" max="360" step="0.5" value="0" id="rotYW" class="range"/><br />
-			ZW: <input type="range" min="0" max="360" step="0.5" value="0" id="rotZW" class="range"/><br />
+			<p class="description">YZ:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotYZ" class="range"/><br />
+			<p class="description">XZ:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotXZ" class="range"/><br />
+			<p class="description">XY:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotXY" class="range"/><br />
+			<p class="description">XW:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotXW" class="range"/><br />
+			<p class="description">YW:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotYW" class="range"/><br />
+			<p class="description">ZW:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotZW" class="range"/><br />
+			<br />
+			<p class="description">Perspective:</p> <input type="range" min="0.4" max="30" step="0.05" value="0.4" id="perspectiveFactor">
 		</div>
 	</body>
 </html>

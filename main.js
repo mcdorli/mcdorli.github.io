@@ -4,12 +4,16 @@
     var size = 500;
     var cubeSize = size / 2;
     
+    var pFactor = 2;
+    
     var rotation1 = document.getElementById("rotYZ");
     var rotation2 = document.getElementById("rotXZ");
     var rotation3 = document.getElementById("rotXY");
     var rotation4 = document.getElementById("rotXW");
     var rotation5 = document.getElementById("rotYW");
     var rotation6 = document.getElementById("rotZW");
+    
+    var persp = document.getElementById("perspectiveFactor");
     
     var tesseract = {
         A: new Vector4(-0.5, -0.5, -0.5, -0.5),
@@ -75,6 +79,8 @@
         angle[4] = rotation5.value / 180 * Math.PI;
         angle[5] = rotation6.value / 180 * Math.PI;
         
+        pFactor = persp.value;
+        
     }
     
     function render() {
@@ -115,7 +121,7 @@
             for (var j in combinations[i]) {
                 var p = temp[combinations[i][j]];
                 
-                var proj = p.z + 2;
+                var proj = (p.z + pFactor * 2) / pFactor;
                 
                 ctx.lineTo(p.x * cubeSize / proj, p.y * cubeSize / proj);
             }
