@@ -31,7 +31,7 @@
         P: new Vector4(-0.5,  0.5,  0.5,  0.5)
     };
     
-    var combinations = "ABCD,EFGH,ABFE,BCGF,CDHG,ADHE,IJKL,MNOP,IJNM,JKON,KLPO,LIMP,ABJI,BCKJ,CDLK,DAIL,EFNM,FGON,GHPO,HEMP".split(",");
+    var combinations = "ABCD,EFGH,ABFE,BCGF,CDHG,ADHE,IJKL,MNOP,IJNM,JKON,KLPO,LIMP,ABJI,BCKJ,CDLK,DAIL,EFNM,FGON,GHPO,HEMP,EAIM,BFNJ,CGOK,HDLP".split(",");
     for (var i in combinations) {
         combinations[i] = combinations[i].split("");
     }
