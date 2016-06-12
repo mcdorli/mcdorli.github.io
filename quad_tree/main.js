@@ -7,6 +7,9 @@ var cellSize = 8;
 var grid = [];
 var quads = [];
 
+var clicked = false;
+var currColor = 0;
+
 function main() {
 	c = document.getElementById("canvas");
 	c.width = size * cellSize;
@@ -20,10 +23,27 @@ function main() {
 		}
 	}
 	
-	c.addEventListener("click", function(e) {
-		grid[(e.clientX - this.offsetLeft) / cellSize | 0][(e.clientY - this.offsetTop) / cellSize | 0] = 0;
+	c.addEventListener("mousedown", function(e) {
+		var x = (e.clientX - this.offsetLeft) / cellSize | 0;
+		var y = (e.clientY - this.offsetTop) / cellSize | 0;
+		grid[x][y] = Math.abs(grid[x][y] - 1);
+		currColor = grid[x][y];
+		clicked = true;
 		loop();
+	});
+	
+	document.addEventListener("mouseup", function(e) {
+		clicked = false;
 	})
+	
+	c.addEventListener("mousemove", function(e) {
+		if (clicked) {
+			var x = (e.clientX - this.offsetLeft) / cellSize | 0;
+			var y = (e.clientY - this.offsetTop) / cellSize | 0;
+			grid[x][y] = currColor;
+		}
+		loop();
+	});
 	
 	ctx.lineWidth = 2;
 	
