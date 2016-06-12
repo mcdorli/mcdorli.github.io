@@ -12,6 +12,18 @@ function main() {
 	c.width = size * cellSize;
 	c.height = size * cellSize;
 	ctx = c.getContext("2d");
+		
+	for (var x = 0; x < size; x++) {
+		grid[x] = [];
+		for (var y = 0; y < size; y++) {
+			grid[x][y] = 1;
+		}
+	}
+	
+	c.addEventListener("click", function(e) {
+		grid[(e.clientX - this.offsetLeft) / cellSize | 0][(e.clientY - this.offsetTop) / cellSize | 0] = 0;
+		loop();
+	})
 	
 	ctx.lineWidth = 2;
 	
@@ -19,6 +31,12 @@ function main() {
 }
 
 this.generate = function() {
+	for (var x = 0; x < size; x++) {
+		grid[x] = [];
+		for (var y = 0; y < size; y++) {
+			grid[x][y] = 1;
+		}
+	}
 	loop();
 }
 
@@ -28,15 +46,7 @@ function loop() {
 }
 
 function update() {
-	grid = [];
 	quads = [];
-	
-	for (var x = 0; x < size; x++) {
-		grid[x] = [];
-		for (var y = 0; y < size; y++) {
-			grid[x][y] = Math.random() * y < 20 ? 1 : 0;
-		}
-	}
 	
 	var done = [];
 	for (var x = 0; x < size; x++) {
