@@ -9,6 +9,9 @@ var quads = [];
 
 var clicked = false;
 var currColor = 0;
+var currSize = 0;
+
+var brushRange = document.getElementById("brushSize");
 
 function main() {
 	c = document.getElementById("canvas");
@@ -26,7 +29,12 @@ function main() {
 	c.addEventListener("mousedown", function(e) {
 		var x = (e.clientX - this.offsetLeft) / cellSize | 0;
 		var y = (e.clientY - this.offsetTop) / cellSize | 0;
-		grid[x][y] = Math.abs(grid[x][y] - 1);
+		var color = Math.abs(grid[x][y] - 1);
+		for (var xx = x - currSize; xx <= x + currSize; xx++) {
+			for (var yy = y - currSize; yy <= y + currSize; yy++) {
+				(grid[xx | 0] || [])[yy | 0] = color;
+			}
+		}
 		currColor = grid[x][y];
 		clicked = true;
 		loop();
@@ -40,7 +48,11 @@ function main() {
 		if (clicked) {
 			var x = (e.clientX - this.offsetLeft) / cellSize | 0;
 			var y = (e.clientY - this.offsetTop) / cellSize | 0;
-			grid[x][y] = currColor;
+			for (var xx = x - currSize; xx <= x + currSize; xx++) {
+				for (var yy = y - currSize; yy <= y + currSize; yy++) {
+					(grid[xx | 0] || [])[yy | 0] = currColor;
+				}
+			}
 		}
 		loop();
 	});
@@ -58,6 +70,11 @@ this.generate = function() {
 		}
 	}
 	loop();
+}
+
+this.setSize = function() {
+	currSize = -+-brushRange.value;
+	console.log(currSize);
 }
 
 function loop() {

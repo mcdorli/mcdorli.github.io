@@ -10,7 +10,8 @@
 	</head>
 	<body>
 		<canvas id="canvas"></canvas><br />
-		<input type="button" value="reset" onclick="global.generate()" />
+		<input type="button" value="reset" onclick="global.generate()" /><br />
+		Brush size: <input type="range" min="0" max="5" value="0" step="1" onchange="global.setSize()" id="brushSize">
 		<p style="width: 500px; font-size: 20px">
 			Click the image, to convert a pixel to a white one. 
 		</p>
