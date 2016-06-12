@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hypercube</title>
+		<script type="text/javascript" src="main.js" defer="defer"></script>
+		<script type="text/javascript" src="Math.js"></script>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+				margin-left: 5px;
+			}
+			canvas {
+				background-color: black;
+			}
+			.range {
+				width: 500px;
+			}
+			#container {
+				position: absolute;
+				top: 0;
+				right: 50px;
+				padding: 5px;
+				border: 1px solid black;
+				box-sizing: border-box;
+			}
+			.description {
+				width: 30px;
+				margin: 2px;
+			}
+		</style>
+	<body>
+		<canvas id="canvas"></canvas><br />
+		<p style="width: 500px; font-size: 20px">
+			The sliders on the right control the rotation of the hypercube on different planes.
+		</p>
+		<div id="container">
+			<p class="description">YZ:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotYZ" class="range"/><br />
+			<p class="description">XZ:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotXZ" class="range"/><br />
+			<p class="description">XY:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotXY" class="range"/><br />
+			<p class="description">XW:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotXW" class="range"/><br />
+			<p class="description">YW:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotYW" class="range"/><br />
+			<p class="description">ZW:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotZW" class="range"/><br />
+			<br />
+			<p class="description">Perspective:</p> <input type="range" min="0.6" max="18" step="0.001" value="1" id="perspectiveFactor">
+		</div>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fractal tree</title>
+		<script type="text/javascript" src="main.js" defer="defer"></script>
+		<script type="text/javascript" src="Math.min.js"></script>
+		<script type="text/javascript" src="Node.js"></script>
+		<style type="text/css">
+			.range {
+				width: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas><br />
+		<span style="color: red">Warning: Can get really laggy in higher levels!</span><br />
+		Angle: <input type="range" id="angle" value="30" min="0" max="360" class="range" /><br />
+		Length: <input type="range" id="length" value="50" min="5" max="100" class="range" /><br />
+		Tree size: <input type="range" id="treeSize" value="5" min="1" max="15" class="range" /><br />
+		Angle offset:<input type="range" id="angleOffset" value="0" min="-180" max="180" class="range" /><br />
+			
+	</body>
+</html>

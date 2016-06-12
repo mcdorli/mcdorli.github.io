@@ -1,45 +1,32 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Hypercube</title>
-		<script type="text/javascript" src="main.js" defer="defer"></script>
-		<script type="text/javascript" src="Math.js"></script>
-		<style>
-			body {
-				padding: 0;
-				margin: 0;
-				margin-left: 5px;
-			}
-			canvas {
-				background-color: black;
-			}
-			.range {
-				width: 500px;
-			}
-			#container {
-				position: absolute;
-				top: 0;
-				right: 50px;
-				padding: 5px;
-				border: 1px solid black;
-				box-sizing: border-box;
-			}
-			.description {
-				width: 30px;
-				margin: 2px;
-			}
-		</style>
-	<body>
-		<canvas id="canvas"></canvas><br />
-		<div id="container">
-			<p class="description">YZ:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotYZ" class="range"/><br />
-			<p class="description">XZ:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotXZ" class="range"/><br />
-			<p class="description">XY:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotXY" class="range"/><br />
-			<p class="description">XW:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotXW" class="range"/><br />
-			<p class="description">YW:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotYW" class="range"/><br />
-			<p class="description">ZW:</p> <input type="range" min="0" max="360" step="0.5" value="0" id="rotZW" class="range"/><br />
-			<br />
-			<p class="description">Perspective:</p> <input type="range" min="0.6" max="18" step="0.001" value="1" id="perspectiveFactor">
-		</div>
-	</body>
+    <head>
+        <title>Demos</title>
+        <style type="text/css">
+            * {
+                text-align: center;
+            }
+            #container {
+                width: 250px;
+                margin-top: 1%;
+                margin-left: calc(50% - 125px);
+                border: 1px solid black;
+            }
+            input {
+                margin: 10px;
+                width: 150px;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Demos</h1><br />
+        <div id="container">
+            <input type="button" value="Hypercube" onclick="location.href='hypercube/index.html'"/><br />
+            <input type="button" value="Dragon curve" onclick="location.href='dragon_curve/index.html'"/><br />
+            <input type="button" value="Quad tree" onclick="location.href='quad_tree/index.html'"/><br />
+            <input type="button" value="Hunt and kill" onclick="location.href='hunt_n_kill/index.html'"/><br />
+            <input type="button" value="Binary fractal tree" onclick="location.href='fractal_tree/index.html'"/><br />
+        </div>
+    </body>
 </html>
