@@ -6,12 +6,12 @@ var icosahedron = new function() {
     var perspectiveFactor = 400;
     
     var triangles = [];
-    var scale = 100;
+    var scale = 150;
     
     var light = new Vector3(1, 1, 1).normalize();
     
-    var X = 0.525731112119133606 * scale;
-    var Z = 0.85065080835203993 * scale;
+    var X = 0.525731112119133606;
+    var Z = 0.85065080835203993;
     
     vertices = [   
         [-X, 0.0, Z], [X, 0.0, Z], [-X, 0.0, -Z], [X, 0.0, -Z],    
@@ -39,7 +39,8 @@ var icosahedron = new function() {
             triangles.push(new Triangle(
                 new Vector3(vertices[ind[0]][0], vertices[ind[0]][1], vertices[ind[0]][2]),
                 new Vector3(vertices[ind[1]][0], vertices[ind[1]][1], vertices[ind[1]][2]),
-                new Vector3(vertices[ind[2]][0], vertices[ind[2]][1], vertices[ind[2]][2])
+                new Vector3(vertices[ind[2]][0], vertices[ind[2]][1], vertices[ind[2]][2]),
+                scale
             ));
         }
         loop();
@@ -73,9 +74,10 @@ var icosahedron = new function() {
     this.subdivide = function() {
         var newTriangles = [];
         for (var i = 0; i < triangles.length; i++) {
-            newTriangles = newTriangles.concat(triangles[i].subdivide(scale));
+            newTriangles = newTriangles.concat(triangles[i].subdivide());
         }
         triangles = newTriangles;
+        console.log(triangles.length);
     }
     
     main();

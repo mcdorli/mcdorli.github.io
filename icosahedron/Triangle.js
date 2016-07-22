@@ -1,7 +1,8 @@
-function Triangle(pos1, pos2, pos3) {
-    this.pos1 = pos1;
-    this.pos2 = pos2;
-    this.pos3 = pos3;
+function Triangle(pos1, pos2, pos3, scale) {
+    this.pos1 = pos1.normalize().multiply(scale);
+    this.pos2 = pos2.normalize().multiply(scale);
+    this.pos3 = pos3.normalize().multiply(scale);
+    this.scale = scale;
     
     var v1 = this.pos1.clone().subtract(this.pos2);
     var v2 = this.pos3.clone().subtract(this.pos2);
@@ -51,7 +52,7 @@ Triangle.prototype.rotate = function(x, y, z) {
     this.normal.normalize();
 };
 
-Triangle.prototype.subdivide = function(scale) {
+Triangle.prototype.subdivide = function() {
     var v12 = new Vector3(0, 0, 0);
     var v23 = new Vector3(0, 0, 0);
     var v31 = new Vector3(0, 0, 0);
@@ -65,12 +66,14 @@ Triangle.prototype.subdivide = function(scale) {
         v31[p] = this.pos3[p] + this.pos1[p];
     }
     
-    v12.normalize().multiply(scale + 1);
-    v23.normalize().multiply(scale + 1);
-    v31.normalize().multiply(scale + 1);
+    v12.normalize().multiply(this.scale);
+    v23.normalize().multiply(this.scale);
+    v31.normalize().multiply(this.scale);
     
     return [
-        new Triangle(this.pos1, v12, v31), new Triangle(this.pos2, v23, v12),
-        new Triangle(this.pos3, v31, v23), new Triangle(v12, v23, v31)
+        new Triangle(this.pos1, v12, v31, this.scale), 
+        new Triangle(this.pos2, v23, v12, this.scale),
+        new Triangle(this.pos3, v31, v23, this.scale), 
+        new Triangle(v12, v23, v31, this.scale)
     ];
 };
