@@ -1,0 +1,11 @@
+body {
+    margin: 150px;
+    background-color: hsl(0, 0%, 10%);
+}
+
+input[type=button] {
+    width: 100px;
+    height: 30px;
+    background-color: hsl(0, 0%, 60%);
+    border: 0;
+}
