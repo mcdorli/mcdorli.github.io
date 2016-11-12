@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Track Creator</title>
+        <link rel="stylesheet" href="css/master.css" media="screen" title="no title">
+        <script src="main.js" charset="utf-8" defer="defer"></script>
+    </head>
+    <body>
+        <center>
+            <canvas id="canvas"></canvas><br />
+            <input type="button" id="close" class="button" onclick="creator.close()" value="Close road"/>
+            <input type="button" id="undo" class="button" onclick="creator.undo()" value="Undo"/>
+            <select class="placement selector" id="selector">
+                <option value="tree">Fa</option>
+                <option value="startPoint">Start pont</option>
+            </select>
+            <select class="selector type" id="type">
+                <option value="normal">Normál</option>
+                <option value="ice">Jeges</option>
+                <option value="savanna">Szavanna</option>
+            </select>
+            <label for="angle" id="label">Indulási szög: </label><input name="angle" class="angle" id="angle" type="range" min="0" max="360" step="1" />
+            <input type="button" id="save" class="button save" onclick="creator.save()" value="Save"/>
+            <a download="map.json" id="download" style="display: none">Download</a>
+        </center>
+    </body>
+</html>
