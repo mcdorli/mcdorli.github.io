@@ -187,7 +187,7 @@ var creator = (function() {
                 mesh: roadPoints,
                 type: type.value,
                 trees: trees,
-                spikes: spikes
+                spikes: spikes,
                 start: {
                     x: start.x,
                     y: start.y,
