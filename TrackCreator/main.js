@@ -6,6 +6,7 @@ var creator = (function() {
     var points = [];
     var roadPoints = [];
     var trees = [];
+    var spikes = [];
     
     var start;
     
@@ -49,6 +50,12 @@ var creator = (function() {
                 switch (selector.value) {
                     case "tree":
                         trees.push({
+                            x: x,
+                            y: y
+                        });
+                        break;
+                    case "spike":
+                        spikes.push({
                             x: x,
                             y: y
                         });
@@ -180,6 +187,7 @@ var creator = (function() {
                 mesh: roadPoints,
                 type: type.value,
                 trees: trees,
+                spikes: spikes
                 start: {
                     x: start.x,
                     y: start.y,
