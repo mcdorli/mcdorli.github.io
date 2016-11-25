@@ -112,6 +112,11 @@ var creator = (function() {
             ctx.fillRect(trees[i].x - 5, trees[i].y - 5, 10, 10);
         }
         
+        ctx.fillStyle = "lightgrey";
+        for (var i = 0; i < spikes.length; i++) {
+            ctx.fillRect(spikes[i].x - 5, spikes[i].y - 5, 10, 10);
+        }
+        
         if (typeof start !== "undefined") {
             ctx.fillStyle = "red";
             ctx.fillRect(start.x - 5, start.y - 5, 10, 10);
@@ -183,14 +188,38 @@ var creator = (function() {
                 return;
             }
             
+            var newTree = [];
+            for (var i = 0; i < trees.length; i++) {
+                newTree.push(new Vector2(
+                    trees[i].x / c.width - 0.5, 
+                    trees[i].y / c.height - 0.5
+                ));
+            }
+            
+            var newSpikes = [];
+            for (var i = 0; i < spikes.length; i++) {
+                newSpikes.push(new Vector2(
+                    spikes[i].x / c.width - 0.5, 
+                    spikes[i].y / c.height - 0.5
+                ));
+            }
+            
+            var newRoad = [];
+            for (var i = 0; i < roadPoints.length; i++) {
+                newRoad.push(new Vector2(
+                    roadPoints[i].x / c.width - 0.5, 
+                    roadPoints[i].y / c.height - 0.5
+                ));
+            }
+            console.log(newRoad);
             var data = {
-                mesh: roadPoints,
+                mesh: newRoad,
                 type: type.value,
-                trees: trees,
-                spikes: spikes,
+                trees: newTree,
+                spikes: newSpikes,
                 start: {
-                    x: start.x,
-                    y: start.y,
+                    x: start.x / c.width - 0.5,
+                    y: start.y / c.height - 0.5,
                     angle: +angleRange.value
                 }
             }
