@@ -7,15 +7,11 @@ var creator = (function() {
     var roadPoints = [];
     var trees = [];
     var spikes = [];
+    var checkpoints = [];
     
     var start;
     
     var closed = false;
-    
-    var mouse = {
-        x: 0,
-        y: 0
-    }
     
     var selector = document.getElementById("selector");
     var type = document.getElementById("type");
@@ -27,21 +23,11 @@ var creator = (function() {
         c.height = 600;
         ctx = c.getContext("2d");
         
-        c.addEventListener("mousemove", function (e) {
-            var x = e.clientX - this.offsetLeft;
-            var y = e.clientY - this.offsetTop;
-            mouse.x = x;
-            mouse.y = y;
-        });
-        
         c.addEventListener("click", function (e) {
-            var x = e.clientX - this.offsetLeft;
-            var y = e.clientY - this.offsetTop;
-            
+            var x = Math.min(Math.max(e.clientX - this.offsetLeft, roadWidth), c.width - roadWidth);
+            var y = Math.min(Math.max(e.clientY - this.offsetTop, roadWidth), c.height - roadWidth);
+            console.log(x, y);
             if (!closed) {
-                x = Math.min(Math.max(x, roadWidth), c.width - roadWidth);
-                y = Math.min(Math.max(y, roadWidth), c.height - roadWidth);
-                
                 points.push({
                     x: x,
                     y: y
@@ -56,6 +42,12 @@ var creator = (function() {
                         break;
                     case "spike":
                         spikes.push({
+                            x: x,
+                            y: y
+                        });
+                        break;
+                    case "checkPoint":
+                        checkpoints.push({
                             x: x,
                             y: y
                         });
@@ -115,6 +107,11 @@ var creator = (function() {
         ctx.fillStyle = "lightgrey";
         for (var i = 0; i < spikes.length; i++) {
             ctx.fillRect(spikes[i].x - 5, spikes[i].y - 5, 10, 10);
+        }
+        
+        ctx.fillStyle = "lightblue";
+        for (var i = 0; i < checkpoints.length; i++) {
+            ctx.fillRect(checkpoints[i].x - 5, checkpoints[i].y - 5, 10, 10);
         }
         
         if (typeof start !== "undefined") {
@@ -211,12 +208,20 @@ var creator = (function() {
                     roadPoints[i].y / c.height - 0.5
                 ));
             }
-            console.log(newRoad);
+            
+            var newCheckPoint = [];
+            for (var i = 0; i < checkpoints.length; i++) {
+                newCheckPoint.push(new Vector2(
+                    checkpoints[i].x / c.width - 0.5, 
+                    checkpoints[i].y / c.height - 0.5
+                ));
+            }
             var data = {
                 mesh: newRoad,
                 type: type.value,
                 trees: newTree,
                 spikes: newSpikes,
+                checkpoints: newCheckPoint,
                 start: {
                     x: start.x / c.width - 0.5,
                     y: start.y / c.height - 0.5,
