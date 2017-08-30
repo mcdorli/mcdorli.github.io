@@ -52,17 +52,16 @@ setInterval(() => {
   d = o(d, -1);
   if (k[++i] && g(n = C(J, d))) J = n;
   if (J.x + J.y > 61) f(), E += 5;
-  c.fillStyle="#24f"
-  c.fillRect(0, 0, 400, 400);
+  c.fillStyle="#24f";
+  c.fillRect(0, 0, u=400, u);
   c.fillStyle = "#333";
-  c.fillRect(0, 200, 400, 200);
-  u=400
+  c.fillRect(0, h=200, u, h);
   for (x = 0; x < u; x += 3) {
     r = J;
-    a = L + (x - 200) / 400 * R;
+    a = L + (x - h) / u * R;
     l = 0;
     v = 2e4;
-    for (y = 0; y < v; y++) l += 1e-2, r = C(r, o(t(a), 240)), g(r) || (c.fillStyle = ["#999", "#bbb", "#ddd"][(r.x + r.y) % 3 | 0], c.fillRect(x, 200 - 400 / l / 2, 3, 400 / l), y = v)
+    for (y = 0; y < v; y++) l += 1e-2, r = C(r, o(t(a), 240)), g(r) || (c.fillStyle = ["#999", "#bbb", "#ddd"][(r.x + r.y) % 3 | 0], c.fillRect(x, 200 - u / l / 2, 3, u / l), y = v)
   }
   u = v = 33;
   for (y = 0; y < v; y++)
