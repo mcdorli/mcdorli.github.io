@@ -1,6 +1,76 @@
+// Shim
+
 a = document.getElementById("canvas");
 b = document.body;
 c = a.getContext("2d");
 d = document;
 
-for(q='=1~=>Z.xY=(a,bXs(W)ZVXVWaYUk[++i]  )L+=),2,0Wu=v=3-3)%200,y=C(=0;|0]o(t(for("#Wx+1+1.map((q,.y(p,);,3,3Math.))	c.fill;if(Style=Rect(xx<u;x+yy<v;y+ &&g(nJ,d	)J=n";d.addEventListener("key"+u,(eVk[e.keyCode]=g=pZ(M[p||0)[pY|0;SXVM[a][aY]=b;sX=aV({x:a:b}CU+bY,a+boU/b,a/bh=i~V[W-0,-2W0,2)].filter(eZg(Ce	==it=pZWcoWpsin(p	;E(f=qZ{M=[...Array(33)]y,AVAxV!((x|(y	J=W1.5L=R~;p=W32;;;){S2A=h(pA[m=B=0]?j=CA[random()*A.length):B~B){=2)=2)g(	=~&&(I=h(D=2)[0])&&(pI,j=Dm=x=y=u)!m)break}S(o(Cj22p=j}})(k=[];u="down1u="up0setInterval((V{i=36;d=L30T=6e-2-TT;d=o(d,-1)JY+J>61)f(E+=5;333";u=4;0,0,u,u=3){r=J;a=L+(x-2)/u*R;lv=2e4;+)l+~e-2,rr,a240	,g(r)||([999",bbb",ddd"][(rY+r)%3,x,2-u/l/2,3,u/l)=v)}3;+)+)!M[y][x]?0":fff",x*3*3x=JY*3=J*3;0f0";Text("Score"+E,9,370x-1-193,93f";(wWxL0.4	)Y,w,2,2},16)';G=/[^!-T[-}]/.exec(q);)with(q.split(G))q=join(shift());eval(q)
+// End of shim
+
+g = p => (M[p.y | 0] || 0)[p.x | 0] | 0;
+S = (a, b) => M[a.y][a.x] = b;
+s = (a, b = a) => ({
+  x: a,
+  y: b
+});
+C = (a, b) => s(a.x + b.x, a.y + b.y);
+o = (a, b) => s(a.x / b, a.y / b);
+h = (p, i = 1) => [s(-2, 0), s(2, 0), s(0, -2), s(0, 2)].filter(e => g(C(p, e)) == i);
+t = p => s(Math.cos(p), Math.sin(p));
+E = 0;
+(f = q => {
+  M = [...Array(33)].map((q, y, A) => A.map((q, x) => !((x - 3) % 2 | (y - 3) % 2)));
+  J = s(1.5);
+  L = R = 1;
+  p = s(3);
+  u = v = 32;
+  for (;;) {
+    S(p, 2);
+    A = h(p);
+    A[m = B = 0] ? j = C(p, A[Math.random() * A.length | 0]) : B = 1;
+    if (B) {
+      for (y = 0; y < v; y += 2)
+        for (x = 0; x < u; x += 2) g(s(x + 1, y + 1)) == 1 && (I = h(D = s(x + 1, y + 1), 2)[0]) && (p = C(I, j = D), m = x = y = u);
+      if (!m) break
+    }
+    S(o(C(p, j), 2), 2);
+    p = j
+  }
+})();
+k = [];
+u = "down";
+d.addEventListener("key" + u, (e) => k[e.keyCode] = 1);
+u = "up";
+d.addEventListener("key" + u, (e) => k[e.keyCode] = 0);
+setInterval(() => {
+  i = 36;
+  d = o(t(L), 30);
+  T = 6e-2;
+  if (k[++i]) L += -T;
+  if (k[++i] && g(n = C(J, d))) J = n;
+  if (k[++i]) L += T;
+  d = o(d, -1);
+  if (k[++i] && g(n = C(J, d))) J = n;
+  if (J.x + J.y > 61) f(), E += 5;
+  c.fillStyle="#24f"
+  c.fillRect(0, 0, 400, 400);
+  c.fillStyle = "#333";
+  c.fillRect(0, 200, 400, 200);
+  u=400
+  for (x = 0; x < u; x += 3) {
+    r = J;
+    a = L + (x - 200) / 400 * R;
+    l = 0;
+    v = 2e4;
+    for (y = 0; y < v; y++) l += 1e-2, r = C(r, o(t(a), 240)), g(r) || (c.fillStyle = ["#999", "#bbb", "#ddd"][(r.x + r.y) % 3 | 0], c.fillRect(x, 200 - 400 / l / 2, 3, 400 / l), y = v)
+  }
+  u = v = 33;
+  for (y = 0; y < v; y++)
+    for (x = 0; x < u; x++) c.fillStyle = !M[y][x] ? "#000" : "#fff", c.fillRect(x * 3, y * 3, 3, 3);
+  x = J.x * 3, y = J.y * 3;
+  c.fillStyle = "#f00";
+  c.fillText("Score: " + E, 9, 370);
+  c.fillRect(x - 1, y - 1, 3, 3);
+  c.fillRect(93, 93, 3, 3);
+  c.fillRect((w = C(s(x, y), o(t(L), 0.3))).x, w.y, 2, 2);
+}, 16)
