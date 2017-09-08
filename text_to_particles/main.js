@@ -15,6 +15,8 @@ let particles = (function() {
         ctx = c.getContext("2d");
         ctx.translate(c.width / 2, c.height / 2);
         
+        generate();
+        
         loop();
     }
     
@@ -89,10 +91,7 @@ let particles = (function() {
         return array;
     }
     
-    main();
-    
-    return {
-        generate: () => {
+    function generate() {
             let text1 = document.getElementById("text1").value;
             let text2 = document.getElementById("text2").value;
             let font = document.getElementById("font").value;
@@ -167,6 +166,11 @@ let particles = (function() {
             }
             
         }
+    
+    main();
+    
+    return {
+        generate: generate
     };
         
 }());
