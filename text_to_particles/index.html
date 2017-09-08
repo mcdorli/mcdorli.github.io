@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+        <title>Text to particles</title>
+        <script src="main.js" charset="utf-8" defer="defer"></script>
+        <script src="Math.min.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <center>
+            <canvas id="canvas" width="500px" height="500px"></canvas><br />
+            <span>Text1: </span><input type="text" id="text1" value="Text 1" maxlength="20" />
+            <span>Text2: </span><input type="text" id="text2" value="Text 2" maxlength="20" /><br />
+            <br />
+            <span>Font: </span><input type="text" id="font" value="Arial" /><br />
+            <br />
+            <input type="button" value="generate" onclick="particles.generate()" />
+        </center>
+    </body>
+</html>
